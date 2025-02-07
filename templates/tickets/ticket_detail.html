@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Ticket</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Detalle del Ticket</h1>
+        <div class="card">
+            <div class="card-header">
+                <h2>Ticket ID: {{ ticket.unique_identifier }}</h2>
+            </div>
+            <div class="card-body">
+                <p><strong>Evento:</strong> {{ ticket.event.name }}</p>
+                <p><strong>Fecha del Evento:</strong> {{ ticket.event.date }}</p>
+                {% load humanize %}
+                <p><strong>Precio de Reventa:</strong> ${{ ticket.resale_price|floatformat:0|intcomma }}</p>
+                <p><strong>Estado de Compra:</strong> {{ ticket.get_purchase_status_display }}</p>
+                <p><strong>Vendedor:</strong> {{ ticket.seller.username }}</p>
+
+                <p><strong>Comprador:</strong> 
+                    {% if ticket.buyer %}
+                        {{ ticket.buyer.username }}
+                    {% else %}
+                        No asignado
+                    {% endif %}
+                </p>
+                <p><strong>Ubicación del Evento:</strong> {{ ticket.venue_location }}</p>
+            </div>
+            <div class="card-footer text-end">
+                {% if ticket.purchase_status == ticket.AVAILABLE %}
+                    <button id="pay-button" class="btn btn-success mb-2">Comprar</button>
+                {% else %}
+                    <button class="btn btn-secondary" disabled>No Disponible</button>
+                {% endif %}
+                <a href="javascript:history.back()" class="btn btn-primary">Volver al Panel de Tickets</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://checkout.wompi.co/widget.js"></script>
+    <script>
+        const publicKey = "{{ wompi_public_key }}";
+        const ticketPrice = "{{ ticket.resale_price|floatformat:2 }}"; 
+        const ticketId = "{{ ticket.unique_identifier }}";
+        
+        function generateUniqueReference() {
+            const timestamp = Date.now(); 
+            const randomSuffix = Math.floor(Math.random() * 1000); 
+            return `${ticketId}_${timestamp}_${randomSuffix}`;
+        }
+
+        function getCSRFToken() {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, 'csrftoken'.length) === 'csrftoken') {
+                        cookieValue = decodeURIComponent(cookie.substring('csrftoken'.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        const button = document.getElementById('pay-button');
+
+
+        button.addEventListener('click', async () => {
+
+            const uniqueReference = generateUniqueReference();
+
+            const widget = new WidgetCheckout({
+                currency: 'COP',
+                amountInCents: parseInt(ticketPrice) * 100,
+                publicKey: publicKey,
+                reference: uniqueReference,
+                redirectUrl: 'http://localhost:8000/payments/wompi/redirect/',
+            });
+
+            $.ajax({
+                url: 'http://localhost:8000/payments/wompi/transaction/',
+                method: 'POST',
+                data: {
+                    'wompi_id': '', 
+                    'amount': parseInt(ticketPrice) * 100,
+                    'status': 'PENDING',
+                    'reference': uniqueReference,
+                    'ticket_id': ticketId
+                },
+                xhrFields: {
+                    withCredentials: true 
+                },
+                headers: {
+                    'X-CSRFToken': getCSRFToken()
+                },
+                success: function(response) {
+                    console.log('Transacción creada:', response);
+                },
+                error: function(error) {
+                    console.error('Error al crear la transacción:', error);
+                    alert('Hubo un problema al crear la transacción. Intenta nuevamente.',error);
+                }
+            });
+
+            widget.open((result) => {
+                console.log('Resultado del pago:', result);
+                if (result.transaction) {
+                    const redirectUrl = `http://localhost:8000/payments/wompi/redirect/?id=${result.transaction.id}`;
+                    window.location.href = redirectUrl;
+                } else {
+                    alert('Hubo un problema al procesar el pago. Intenta nuevamente.');
+                }
+            });
+
+            
+        });
+        
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+flake8
+black
+pre-commit
+pytest
+pytest-django
+pytest-cov
+PyJWT

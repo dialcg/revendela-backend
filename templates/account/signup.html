@@ -1,0 +1,52 @@
+{% load socialaccount %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'accounts/auth.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center vh-100" style="padding: 0 20px;">
+    <div class="card shadow-lg p-4" style="max-width: 700px; width: 100%; height: 600px; border-radius: 10px; overflow: hidden;">
+        <h1 class="text-center mb-4" style="font-family: 'Pacifico', cursive; font-size: 1.8rem;">Regístrate</h1>
+
+        <form method="post" action="{% url 'account_signup' %}" style="overflow-y: auto; max-height: 400px;">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.as_p }}
+                <div class="mb-3">
+                    <label for="id_role" class="form-label fw-bold">Selecciona tu rol:</label>
+                    <select name="role" id="id_role" class="form-select" required>
+                        <option value="buyer">Comprador</option>
+                        <option value="seller">Vendedor</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-dark w-100">Crear cuenta</button>
+        </form>
+
+        <div class="text-center my-4">
+            <span class="text-muted" style="font-size: 0.9rem;">o regístrate con:</span>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a href="{% provider_login_url 'google' %}" class="btn btn-danger flex-fill me-2">
+                Google
+            </a>
+            <a href="{% provider_login_url 'facebook' %}" class="btn btn-primary flex-fill">
+                Facebook
+            </a>
+        </div>
+
+        <div class="text-center mt-4">
+            <p class="mb-2" style="font-size: 0.9rem;">
+                ¿Ya tienes una cuenta? 
+                <a href="{% url 'account_login' %}" class="text-dark text-decoration-none fw-bold">Inicia sesión aquí</a>.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

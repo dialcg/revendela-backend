@@ -1,0 +1,62 @@
+.navbar-brand {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+}
+
+.center-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh; 
+    background: #f8f9fa;
+}
+
+.center-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.hero {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px 15px;
+    display: flex;
+    align-items: center;
+}
+
+.hero .row > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btn-lg {
+    padding: 12px 24px;
+}
+
+@media (max-width: 768px) {
+    .hero .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero .row > div {
+        margin-bottom: 20px;
+    }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
