@@ -1,3 +1,13 @@
-from django.shortcuts import render
+from rest_framework import generics
+from rest_framework.pagination import PageNumberPagination
+from .repositories import EventRepository
+from .serializers import EventSerializer
+from rest_framework.filters import SearchFilter, OrderingFilter
 
-# Create your views here.
+class EventListAPIView(generics.ListAPIView):
+    queryset = EventRepository.get_all_events()
+    serializer_class = EventSerializer
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['name', 'description', 'category__name', 'organizer__name']  
+    ordering_fields = ['name', 'date']  
+    pagination_class = PageNumberPagination

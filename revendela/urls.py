@@ -31,6 +31,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("payments/", include("payments.urls")),
     path("tickets/", include("tickets.urls")),
+    path("events/", include("events.urls")),
 ]
 
 if settings.DEBUG:
