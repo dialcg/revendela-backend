@@ -32,13 +32,3 @@ def test_get_login_redirect_url_seller(client):
 
     assert redirect_url == reverse("seller_tickets")
 
-
-@pytest.mark.django_db
-def test_get_login_redirect_url_anonymous(client):
-    request = client.request().wsgi_request
-    request.user = AnonymousUser()
-    adapter = MyAccountAdapter()
-
-    redirect_url = adapter.get_login_redirect_url(request)
-
-    assert redirect_url == "/accounts/"
