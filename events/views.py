@@ -5,9 +5,11 @@ from .serializers import EventSerializer
 from rest_framework.filters import SearchFilter, OrderingFilter
 
 class EventListAPIView(generics.ListAPIView):
-    queryset = EventRepository.get_all_events()
     serializer_class = EventSerializer
     filter_backends = [SearchFilter, OrderingFilter]
-    search_fields = ['name', 'description', 'category__name', 'organizer__name']  
-    ordering_fields = ['name', 'date']  
+    search_fields = ['name', 'description', 'category__name', 'organizer__name']
+    ordering_fields = ['name', 'date']
     pagination_class = PageNumberPagination
+
+    def get_queryset(self):
+        return EventRepository.get_all_events()
