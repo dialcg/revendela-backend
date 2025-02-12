@@ -28,7 +28,6 @@ urlpatterns = [
     path("", HomePageView.as_view(), name="home"),
     path("admin/", admin.site.urls),
     path("authy/", include("authy.urls")),
-    path("accounts/", include("allauth.urls")),
     path("payments/", include("payments.urls")),
     path("tickets/", include("tickets.urls")),
     path("events/", include("events.urls")),

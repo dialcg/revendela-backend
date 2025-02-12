@@ -1,4 +1,3 @@
-from allauth.account.adapter import DefaultAccountAdapter
 from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
@@ -39,18 +38,6 @@ class RoleSelectionView(LoginRequiredMixin, TemplateView):
                 return redirect(reverse("seller_tickets"))
         return self.get(request, *args, **kwargs)
 
-
-class MyAccountAdapter(DefaultAccountAdapter):
-    def get_login_redirect_url(self, request):
-        user = request.user
-        if user.is_authenticated:
-            if not user.role:
-                return reverse("role_selection")
-            elif user.role == "buyer":
-                return reverse("buyer_tickets")
-            elif user.role == "seller":
-                return reverse("seller_tickets")
-        return super().get_login_redirect_url(request)
 
 
 class CustomSignupView(forms.Form):

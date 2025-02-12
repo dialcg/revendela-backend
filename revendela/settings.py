@@ -47,11 +47,6 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
     'django_filters',
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",
-    "allauth.socialaccount.providers.google",
-    "allauth.socialaccount.providers.facebook",
     "tickets",
     "events",
     "notifications",
@@ -69,37 +64,19 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "allauth.account.middleware.AccountMiddleware",
     "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "revendela.urls"
 
-# --- DJANGO ALLAUTH CONFIGURATION ---
+
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
 ]
 SITE_ID = 1
-LOGIN_REDIRECT_URL = "/accounts/login/"
-LOGOUT_REDIRECT_URL = "/accounts/"
+
 AUTH_USER_MODEL = "authy.CustomUser"
-ACCOUNT_SIGNUP_FORM_CLASS = "authy.views.CustomSignupView"
-ACCOUNT_ADAPTER = "authy.views.MyAccountAdapter"
-SOCIALACCOUNT_PROVIDERS = {
-    "google": {
-        "APP": {
-            "client_id": config("GOOGLE_CLIENT_ID"),
-            "secret": config("GOOGLE_CLIENT_SECRET"),
-        },
-    },
-    "facebook": {
-        "APP": {
-            "client_id": config("FACEBOOK_APP_ID"),
-            "secret": config("FACEBOOK_SECRET_KEY"),
-        },
-    },
-}
+
 
 # --- JWT CONFIGURATION ---
 REST_FRAMEWORK = {
