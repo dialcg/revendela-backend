@@ -31,6 +31,14 @@ jobs:
       DATABASE_PASSWORD: revendela123
       DATABASE_HOST: 127.0.0.1  
       DATABASE_PORT: 5432
+      GOOGLE_CLIENT_ID: 77204793820-09kha695h40j58i5tnhncr7cqvtqgai4.apps.googleusercontent.com
+      GOOGLE_CLIENT_SECRET: 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
+      FACEBOOK_APP_ID: 1724453018403596
+      FACEBOOK_SECRET_KEY: 290f00f78ccbb75d3dcf38b5e16be28a
+      WOMPI_PUBLIC_KEY: pub_test_1KEsQHEpFgP0mDfRT9PykZxeUOsQypX0
+      WOMPI_PRIVATE_KEY: prv_test_NUBaNl3hXGJYuh2C3K0uGTeTejwzDbvG
+      WOMPI_SECRET_KEY: test_events_53MTFJm8dhubwPW3Fk2rd7Mgvg1ySA91
+      WOMPI_BASE_URL: https://sandbox.wompi.co/v1
 
     steps:
       - name: Clonar repositorio
