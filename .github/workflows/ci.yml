@@ -24,6 +24,10 @@ jobs:
       DATABASE_PASSWORD: revendela123
       DATABASE_HOST: 127.0.0.1  
       DATABASE_PORT: 5432
+      WOMPI_PUBLIC_KEY: pub_test_1KEsQHEpFgP0mDfRT9PykZxeUOsQypX0
+      WOMPI_PRIVATE_KEY: prv_test_NUBaNl3hXGJYuh2C3K0uGTeTejwzDbvG
+      WOMPI_SECRET_KEY: test_events_53MTFJm8dhubwPW3Fk2rd7Mgvg1ySA91
+      WOMPI_BASE_URL: https://sandbox.wompi.co/v1
 
     steps:
       - uses: actions/checkout@v2
