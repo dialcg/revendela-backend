@@ -33,7 +33,8 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [\
+    "authy",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -51,8 +52,7 @@ INSTALLED_APPS = [
     "events",
     "notifications",
     "core",
-    "payments",
-    "authy",
+    "payments"
 ]
 
 MIDDLEWARE = [
