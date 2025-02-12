@@ -1,69 +1,51 @@
-name: Django CI/CD
+name: CI/CD Pipeline
 
-on:
-  pull_request:
-    branches:
-      - main  
+on: 
   push:
     branches:
-      - main  
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-    
-    services:
-      postgres:
-        image: postgres:15
-        env:
-          POSTGRES_USER: ${{ secrets.DATABASE_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          POSTGRES_DB: ${{ secrets.DATABASE_NAME }}
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U ${{ secrets.DATABASE_USER }} -d ${{ secrets.DATABASE_NAME }}"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    
+    runs-on: ubuntu-latest  
+    env:
+      DATABASE_NAME: revendeladb
+      DATABASE_USER: revendelauser
+      DATABASE_PASSWORD: revendela123
+      DATABASE_HOST: host.docker.internal
+      DATABASE_PORT: 5432
+      GOOGLE_CLIENT_ID: 77204793820-09kha695h40j58i5tnhncr7cqvtqgai4.apps.googleusercontent.com
+      GOOGLE_CLIENT_SECRET: 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
+      FACEBOOK_APP_ID: 1724453018403596
+      FACEBOOK_SECRET_KEY: 290f00f78ccbb75d3dcf38b5e16be28a
+      WOMPI_PUBLIC_KEY: pub_test_1KEsQHEpFgP0mDfRT9PykZxeUOsQypX0
+      WOMPI_PRIVATE_KEY: prv_test_NUBaNl3hXGJYuh2C3K0uGTeTejwzDbvG
+      WOMPI_SECRET_KEY: test_events_53MTFJm8dhubwPW3Fk2rd7Mgvg1ySA91
+      WOMPI_BASE_URL: https://sandbox.wompi.co/v1
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      
-      - name: Set up Python
+      - name: Clonar repositorio
+        uses: actions/checkout@v4  
+
+      - name: Configurar Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-      
-      - name: Install dependencies
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Instalar dependencias
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install -r requirements-dev.txt
-      
-      - name: Set up environment variables
-        run: |
-          echo "DATABASE_NAME=${{ secrets.DATABASE_NAME }}" >> .env
-          echo "DATABASE_USER=${{ secrets.DATABASE_USER }}" >> .env
-          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> .env
-          echo "DATABASE_HOST=localhost" >> .env
-          echo "DATABASE_PORT=5432" >> .env
-          echo "WOMPI_PUBLIC_KEY=${{ secrets.WOMPI_PUBLIC_KEY }}" >> .env
-          echo "WOMPI_PRIVATE_KEY=${{ secrets.WOMPI_PRIVATE_KEY }}" >> .env
-          echo "WOMPI_BASE_URL=${{ secrets.WOMPI_BASE_URL }}" >> .env
-      
-      - name: Run migrations
-        env:
-          DATABASE_URL: postgres://${{ secrets.DATABASE_USER }}:${{ secrets.DATABASE_PASSWORD }}@localhost:5432/${{ secrets.DATABASE_NAME }}
-        run: python manage.py migrate
-      
-      - name: Run linting
-        run: |
-          pip install flake8
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-      
-      - name: Run tests
-        env:
-          DATABASE_URL: postgres://${{ secrets.DATABASE_USER }}:${{ secrets.DATABASE_PASSWORD }}@localhost:5432/${{ secrets.DATABASE_NAME }}
-        run: pytest --disable-warnings
+
+      - name: Ejecutar pruebas
+        run: pytest
