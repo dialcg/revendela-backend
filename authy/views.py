@@ -40,9 +40,3 @@ class RoleSelectionView(LoginRequiredMixin, TemplateView):
 
 
 
-class CustomSignupView(forms.Form):
-
-    def signup(self, request, user):
-        role = request.POST.get("role")
-        user.role = role
-        user.save()
