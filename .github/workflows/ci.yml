@@ -11,20 +11,36 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest  
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: revendela
+          POSTGRES_USER: revendelauser
+          POSTGRES_PASSWORD: revendela123
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U revendelauser -d revendela"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     env:
-      DATABASE_NAME: revendeladb
+      DATABASE_NAME: revendela
       DATABASE_USER: revendelauser
       DATABASE_PASSWORD: revendela123
-      DATABASE_HOST: host.docker.internal
+      DATABASE_HOST: localhost
       DATABASE_PORT: 5432
-      GOOGLE_CLIENT_ID: 77204793820-09kha695h40j58i5tnhncr7cqvtqgai4.apps.googleusercontent.com
-      GOOGLE_CLIENT_SECRET: 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
-      FACEBOOK_APP_ID: 1724453018403596
-      FACEBOOK_SECRET_KEY: 290f00f78ccbb75d3dcf38b5e16be28a
-      WOMPI_PUBLIC_KEY: pub_test_1KEsQHEpFgP0mDfRT9PykZxeUOsQypX0
-      WOMPI_PRIVATE_KEY: prv_test_NUBaNl3hXGJYuh2C3K0uGTeTejwzDbvG
-      WOMPI_SECRET_KEY: test_events_53MTFJm8dhubwPW3Fk2rd7Mgvg1ySA91
-      WOMPI_BASE_URL: https://sandbox.wompi.co/v1
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      FACEBOOK_APP_ID: ${{ secrets.FACEBOOK_APP_ID }}
+      FACEBOOK_SECRET_KEY: ${{ secrets.FACEBOOK_SECRET_KEY }}
+      WOMPI_PUBLIC_KEY: ${{ secrets.WOMPI_PUBLIC_KEY }}
+      WOMPI_PRIVATE_KEY: ${{ secrets.WOMPI_PRIVATE_KEY }}
+      WOMPI_SECRET_KEY: ${{ secrets.WOMPI_SECRET_KEY }}
+      WOMPI_BASE_URL: ${{ secrets.WOMPI_BASE_URL }}
+
     steps:
       - name: Clonar repositorio
         uses: actions/checkout@v4  
@@ -48,6 +64,10 @@ jobs:
           pip install -r requirements.txt
           pip install -r requirements-dev.txt
         continue-on-error: true
+
+      - name: Aplicar migraciones
+        run: |
+          python manage.py migrate
 
       - name: Ejecutar pruebas
         run: pytest
