@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest
     services:
       postgres:
         image: postgres:15
@@ -21,25 +21,16 @@ jobs:
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U revendelauser -d revendela"
+          --health-cmd "pg_isready -U revendelauser"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-
     env:
       DATABASE_NAME: revendela
       DATABASE_USER: revendelauser
       DATABASE_PASSWORD: revendela123
-      DATABASE_HOST: localhost
+      DATABASE_HOST: 127.0.0.1  
       DATABASE_PORT: 5432
-      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-      FACEBOOK_APP_ID: ${{ secrets.FACEBOOK_APP_ID }}
-      FACEBOOK_SECRET_KEY: ${{ secrets.FACEBOOK_SECRET_KEY }}
-      WOMPI_PUBLIC_KEY: ${{ secrets.WOMPI_PUBLIC_KEY }}
-      WOMPI_PRIVATE_KEY: ${{ secrets.WOMPI_PRIVATE_KEY }}
-      WOMPI_SECRET_KEY: ${{ secrets.WOMPI_SECRET_KEY }}
-      WOMPI_BASE_URL: ${{ secrets.WOMPI_BASE_URL }}
 
     steps:
       - name: Clonar repositorio
