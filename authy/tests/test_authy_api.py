@@ -99,4 +99,42 @@ def test_logout_no_token():
 
     assert response.status_code == 400 
     assert response.data["error"] == "Invalid token"
+    
+@pytest.mark.django_db
+def test_user_profile_unauthorized():
+    client = APIClient()
+    response = client.get("/authy/profile/1/")  
+
+    assert response.status_code == 401  
+
+@pytest.mark.django_db
+def test_user_profile_authorized():
+    client = APIClient()
+    User = get_user_model()
+    user = User.objects.create_user(username="testuser", password="testpassword")
+
+    token_response = client.post("/authy/api/token/", {"username": user.username, "password": "testpassword"})
+    access_token = token_response.data["access"]
+
+    headers = {"Authorization": f"Bearer {access_token}"}
+    response = client.get(f"/authy/profile/{user.id}/", headers=headers)
+
+    assert response.status_code == 200  
+    assert response.data["id"] == user.id  
+
+@pytest.mark.django_db
+def test_update_user_profile():
+    client = APIClient()
+    User = get_user_model()
+    user = User.objects.create_user(username="testuser", password="testpassword")
+
+    token_response = client.post("/authy/api/token/", {"username": user.username, "password": "testpassword"})
+    access_token = token_response.data["access"]
+
+    headers = {"Authorization": f"Bearer {access_token}"}
+    new_data = {"username": "updateduser"}
+    response = client.patch(f"/authy/profile/{user.id}/", new_data, headers=headers, format="json")
+
+    assert response.status_code == 200  
+    assert response.data["username"] == "updateduser"
 

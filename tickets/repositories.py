@@ -43,3 +43,29 @@ class TicketRepository:
         return Ticket.objects.exclude(seller=user).filter(
             purchase_status=Ticket.AVAILABLE
         )
+        
+    @staticmethod
+    def update_ticket_status_seller(ticket_id):
+        ticket = TicketRepository.get_tickets_by_uuid(ticket_id)
+        ticket.purchase_status = Ticket.SENT
+        ticket.save()
+        return ticket
+
+    @staticmethod
+    def update_ticket_status_buyer(ticket_id):
+        ticket = TicketRepository.get_tickets_by_uuid(ticket_id)
+        ticket.purchase_status = Ticket.CLOSED
+        ticket.save()
+        return ticket
+    
+    @staticmethod
+    def get_all_tickets():
+        return Ticket.objects.all()
+
+    @staticmethod
+    def get_available_tickets():
+        return Ticket.objects.filter(purchase_status="AVAILABLE")
+
+    @staticmethod
+    def get_user_tickets(user: CustomUser):
+        return Ticket.objects.filter(buyer=user)

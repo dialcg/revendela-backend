@@ -8,6 +8,19 @@ from rest_framework.response import Response
 from rest_framework import status, permissions
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from authy.models import CustomUser
+from .serializers import UserProfileSerializer
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
+from authy.repositories import UserRepository
+
+class UserProfileViewSet(viewsets.ModelViewSet):
+    serializer_class = UserProfileSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return UserRepository.get_user_by_id(self.request.user.id)
+
 
 class LogoutView(APIView):
     permission_classes = [permissions.IsAuthenticated]
