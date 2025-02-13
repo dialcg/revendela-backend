@@ -9,11 +9,15 @@ class Ticket(models.Model):
     AVAILABLE = "AVAILABLE"
     PENDING = "PENDING"
     SOLD = "SOLD"
+    SENT = "SENT"
+    CLOSED = "CLOSED"
 
     STATUS_CHOICES = [
         (AVAILABLE, "Disponible"),
         (PENDING, "Pendiente"),
         (SOLD, "Vendido"),
+        (SENT, "Enviado"),
+        (CLOSED, "Cerrado"),
     ]
 
     event = models.ForeignKey(

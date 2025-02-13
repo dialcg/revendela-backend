@@ -3,7 +3,7 @@ from django.urls import reverse
 from authy.models import CustomUser
 from django.contrib.messages import get_messages
 from events.models import EventCategory, Organizer, Venue
-from payments.tests.test_views import User
+from django.contrib.auth.models import User
 from tickets.models import Event, Ticket
 from events.repositories import EventRepository
 
