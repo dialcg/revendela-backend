@@ -1,6 +1,8 @@
+from decimal import Decimal
 from django.test import TestCase
 from django.core import mail
 from django.contrib.auth import get_user_model
+from authy.models import Wallet
 from tickets.models import Ticket
 from events.models import Event, Venue, EventCategory, Organizer
 
@@ -41,9 +43,15 @@ class TicketSignalTests(TestCase):
         self.assertIn(self.buyer.email, mail.outbox[0].to)
 
     def test_notify_ticket_closed(self):
+        # Create wallet for seller
+        self.seller.wallet = Wallet.objects.create(user=self.seller, balance=Decimal("0.000"))
+
         self.ticket.purchase_status = Ticket.CLOSED
         self.ticket.save()
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertIn("Tu ticket ha sido cerrado", mail.outbox[0].subject)
         self.assertIn(self.seller.email, mail.outbox[0].to)
+
+        self.seller.refresh_from_db()
+        self.assertEqual(self.seller.wallet.balance, Decimal("92.000"))

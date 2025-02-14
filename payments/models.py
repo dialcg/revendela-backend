@@ -21,7 +21,7 @@ class Transaction(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     wompi_id = models.CharField(max_length=100, null=True, blank=True)
     reference = models.CharField(max_length=100, null=True, blank=True)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    amount = models.DecimalField(max_digits=10, decimal_places=3)
     status = models.CharField(
         max_length=10,
         choices=STATUS_CHOICES,

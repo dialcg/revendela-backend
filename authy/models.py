@@ -20,3 +20,15 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
+
+class Wallet(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name="wallet")
+    balance = models.DecimalField(max_digits=10, decimal_places=3, default=0.000)
+    last_updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Wallet"
+        verbose_name_plural = "Wallets"
+
+    def __str__(self):
+        return f"{self.user.username} - Balance: {self.balance}"
