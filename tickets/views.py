@@ -2,7 +2,7 @@ from decouple import config
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import TemplateView, ListView, DetailView, View
 
@@ -12,6 +12,56 @@ from events.repositories import EventRepository
 from .models import Ticket
 from django.views.generic import TemplateView
 
+from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import TicketSerializer
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
+
+
+class TicketViewSet(viewsets.ModelViewSet):
+    queryset = TicketRepository.get_all_tickets()
+    serializer_class = TicketSerializer
+    permission_classes = [IsAuthenticated]
+    
+    @action(detail=False, methods=['get'])
+    def available(self, request):
+        available_tickets = TicketRepository.get_available_tickets()
+        serializer = TicketSerializer(available_tickets, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    @action(detail=False, methods=['get'])
+    def purchased(self, request):
+        user_tickets = TicketRepository.get_user_tickets(request.user)
+        serializer = TicketSerializer(user_tickets, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    @action(detail=True, methods=['put'], url_path='update-status-seller')
+    def update_status_seller(self, request, pk=None):
+        if request.user.role != CustomUser.SELLER:
+            return Response({"error": "No tienes permisos para realizar esta acción."}, status=status.HTTP_403_FORBIDDEN)
+        
+        if 'image' not in request.FILES:
+            return Response({"error": "Se requiere una imagen para actualizar el estado."}, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            TicketRepository.update_ticket_status_seller(pk)
+            return Response({"message": "Ticket marcado como ENVIADO"}, status=status.HTTP_200_OK)
+        except ValueError as e:
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=True, methods=['put'], url_path='update-status-buyer')
+    def update_status_buyer(self, request, pk=None):
+        if request.user.role != CustomUser.BUYER:
+            return Response({"error": "No tienes permisos para realizar esta acción."}, status=status.HTTP_403_FORBIDDEN)
+        
+        try:
+            TicketRepository.update_ticket_status_buyer(pk)
+            return Response({"message": "Ticket marcado como CERRADO"}, status=status.HTTP_200_OK)
+        except ValueError as e:
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+    
 
 class HomePageView(TemplateView):
     template_name = "home.html"

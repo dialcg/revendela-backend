@@ -1,4 +1,3 @@
-from allauth.account.adapter import DefaultAccountAdapter
 from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
@@ -8,6 +7,19 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
 from rest_framework_simplejwt.tokens import RefreshToken
+
+from authy.models import CustomUser
+from .serializers import UserProfileSerializer
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
+from authy.repositories import UserRepository
+
+class UserProfileViewSet(viewsets.ModelViewSet):
+    serializer_class = UserProfileSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return UserRepository.get_user_by_id(self.request.user.id)
 
 
 class LogoutView(APIView):
@@ -40,22 +52,4 @@ class RoleSelectionView(LoginRequiredMixin, TemplateView):
         return self.get(request, *args, **kwargs)
 
 
-class MyAccountAdapter(DefaultAccountAdapter):
-    def get_login_redirect_url(self, request):
-        user = request.user
-        if user.is_authenticated:
-            if not user.role:
-                return reverse("role_selection")
-            elif user.role == "buyer":
-                return reverse("buyer_tickets")
-            elif user.role == "seller":
-                return reverse("seller_tickets")
-        return super().get_login_redirect_url(request)
 
-
-class CustomSignupView(forms.Form):
-
-    def signup(self, request, user):
-        role = request.POST.get("role")
-        user.role = role
-        user.save()
