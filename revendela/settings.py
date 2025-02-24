@@ -146,9 +146,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # --- EMAIL CONFIGURATION ---
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = "none"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "mailhog"
+EMAIL_PORT = 1025
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = "no-reply@localhost"
 
 
 # Internationalization

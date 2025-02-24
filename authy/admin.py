@@ -1,4 +1,21 @@
 from django.contrib import admin
-from .models import CustomUser
+from django.contrib.auth.admin import UserAdmin
+from .models import CustomUser, Wallet
 
-admin.site.register(CustomUser)
+
+@admin.register(CustomUser)
+class CustomUserAdmin(UserAdmin):
+    list_display = ("username", "email", "role", "is_active", "is_staff")
+    search_fields = ("username", "email")
+    list_filter = ("role", "is_active", "is_staff")
+    fieldsets = UserAdmin.fieldsets + (
+        ("Additional Info", {"fields": ("profile_picture", "social_account_provider", "role")}),
+    )
+
+
+@admin.register(Wallet)
+class WalletAdmin(admin.ModelAdmin):
+    list_display = ("user", "balance", "last_updated_at")
+    search_fields = ("user__username",)
+    ordering = ("-last_updated_at",)
+

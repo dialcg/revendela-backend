@@ -28,7 +28,7 @@ class Ticket(models.Model):
     )
     resale_price = models.DecimalField(
         max_digits=10,
-        decimal_places=2,
+        decimal_places=3,
         blank=True,
         null=True,
         verbose_name="Precio de reventa",
