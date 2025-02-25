@@ -47,12 +47,12 @@ INSTALLED_APPS = [\
     "rest_framework",
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
-    'django_filters',
     "tickets",
     "events",
     "notifications",
     "core",
-    "payments"
+    "payments",
+    "django_celery_beat"
 ]
 
 MIDDLEWARE = [
@@ -77,6 +77,20 @@ SITE_ID = 1
 
 AUTH_USER_MODEL = "authy.CustomUser"
 
+# --- CELEERY CONFIGURATION ---
+from celery.schedules import crontab
+
+CELERY_BEAT_SCHEDULE = {
+    'cancel-pending-tickets-every-midnight': {
+        'task': 'tickets.tasks.cancel_pending_tickets_task',
+        'schedule': crontab(hour=0, minute=0),  # Se ejecuta a medianoche todos los días
+    },
+}
+
+CELERY_BROKER_URL = 'memory://'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 # --- JWT CONFIGURATION ---
 REST_FRAMEWORK = {

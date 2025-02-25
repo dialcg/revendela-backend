@@ -31,5 +31,26 @@ services:
       - "1025:1025"  
       - "8025:8025"  
 
+  celery:
+    build: .
+    command: celery -A revendela worker --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - django_app
+    env_file:
+      - .env
+
+  celery-beat:
+    build: .
+    command: celery -A revendela beat --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - django_app
+    env_file:
+      - .env
+
+
 volumes:
   postgres_data:

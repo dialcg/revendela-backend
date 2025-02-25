@@ -6,6 +6,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.mail import send_mail
 from django.conf import settings
+from django.utils import timezone
 from .models import Ticket
 from authy.models import Wallet
 
@@ -19,6 +20,24 @@ def send_ticket_email(subject, message, recipient_email):
     )
     
 logger = logging.getLogger(__name__)
+
+@receiver(post_save, sender=Ticket)
+def update_last_status_change(sender, instance, **kwargs):
+    update_fields = kwargs.get('update_fields')
+
+    if update_fields and 'status' in update_fields:
+        try:
+            with transaction.atomic():
+                instance.last_status_change = timezone.now()
+                instance.save(update_fields=['last_status_change'])
+                logger.info(
+                    f"Updated last_status_change for ticket {instance.unique_identifier}."
+                )
+        except Exception as e:
+            logger.error(
+                f"Error updating last_status_change for ticket {instance.unique_identifier}: {str(e)}"
+            )
+
 
 @receiver(post_save, sender=Ticket)
 def notify_ticket_status_change(sender, instance, **kwargs):
