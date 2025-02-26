@@ -22,24 +22,6 @@ def send_ticket_email(subject, message, recipient_email):
 logger = logging.getLogger(__name__)
 
 @receiver(post_save, sender=Ticket)
-def update_last_status_change(sender, instance, **kwargs):
-    update_fields = kwargs.get('update_fields')
-
-    if update_fields and 'status' in update_fields:
-        try:
-            with transaction.atomic():
-                instance.last_status_change = timezone.now()
-                instance.save(update_fields=['last_status_change'])
-                logger.info(
-                    f"Updated last_status_change for ticket {instance.unique_identifier}."
-                )
-        except Exception as e:
-            logger.error(
-                f"Error updating last_status_change for ticket {instance.unique_identifier}: {str(e)}"
-            )
-
-
-@receiver(post_save, sender=Ticket)
 def notify_ticket_status_change(sender, instance, **kwargs):
     if instance.purchase_status == Ticket.SENT and instance.buyer:
         subject = "Tu ticket ha sido enviado"
@@ -78,4 +60,40 @@ def notify_ticket_status_change(sender, instance, **kwargs):
         except Exception as e:
             logger.error(
                 f"Error al actualizar la billetera del vendedor {instance.seller.username}: {str(e)}"
+            )
+
+@receiver(post_save, sender=Ticket)
+def refund_buyer_on_cancellation(sender, instance, **kwargs):
+    if instance.purchase_status == Ticket.CANCELLED_SELLER and instance.buyer:
+        try:
+            with transaction.atomic():
+                buyer_wallet, created = Wallet.objects.get_or_create(
+                    user=instance.buyer, defaults={"balance": Decimal("0.00")}
+                )
+
+                buyer_wallet.balance += instance.resale_price
+                buyer_wallet.save()
+
+                logger.info(
+                    f"Billetera de {instance.buyer.username} reembolsada con ${instance.resale_price} por la cancelación del ticket {instance.unique_identifier}."
+                )
+
+        except Exception as e:
+            logger.error(
+                f"Error al reembolsar la billetera del comprador {instance.buyer.username} por la cancelación del ticket {instance.unique_identifier}: {str(e)}"
+            )
+
+@receiver(post_save, sender=Ticket)
+def update_last_status_change(sender, instance, **kwargs):
+    if instance.purchase_status in dict(Ticket.STATUS_CHOICES):
+        try:
+            with transaction.atomic():
+                instance.last_status_change = timezone.now()
+                instance.save(update_fields=['last_status_change'])
+                logger.info(
+                    f"El estado del ticket {instance.unique_identifier} ha cambiado a {instance.purchase_status}. Último cambio de estado actualizado."
+                )
+        except Exception as e:
+            logger.error(
+                f"Error al actualizar el último cambio de estado para el ticket {instance.unique_identifier}: {str(e)}"
             )

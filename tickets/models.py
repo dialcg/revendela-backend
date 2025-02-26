@@ -55,6 +55,12 @@ class Ticket(models.Model):
     venue_location = models.CharField(
         max_length=100, null=False, blank=False, verbose_name="Locacion"
     )
+    created_time = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Tiempo de creación",
+        null=False,
+        blank=False
+    )
     last_status_change = models.DateTimeField(
         verbose_name="Último cambio de estado",
         null=False,

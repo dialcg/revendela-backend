@@ -15,7 +15,11 @@ class CustomUserAdmin(UserAdmin):
 
 @admin.register(Wallet)
 class WalletAdmin(admin.ModelAdmin):
-    list_display = ("user", "balance", "last_updated_at")
+    list_display = ("user", "formatted_balance", "last_updated_at")
     search_fields = ("user__username",)
     ordering = ("-last_updated_at",)
+
+    def formatted_balance(self, obj):
+        return "{:,.0f}".format(obj.balance)
+    formatted_balance.short_description = 'Balance'
 
