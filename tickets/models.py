@@ -12,6 +12,7 @@ class Ticket(models.Model):
     SENT = "SENT"
     CLOSED = "CLOSED"
     CANCELLED_SELLER = "CANCELLED_SELLER"
+    CANCELLED_EVENT_TIME = "CANCELLED_EVENT_TIME"
 
     STATUS_CHOICES = [
         (AVAILABLE, "Disponible"),
@@ -20,6 +21,7 @@ class Ticket(models.Model):
         (SENT, "Enviado"),
         (CLOSED, "Cerrado"),
         (CANCELLED_SELLER, "Cancelado"),
+        (CANCELLED_EVENT_TIME, "Cancelado por finalizacion del evento"),
     ]
 
     event = models.ForeignKey(

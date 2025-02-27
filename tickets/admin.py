@@ -8,7 +8,6 @@ class TicketAdmin(admin.ModelAdmin):
     search_fields = ("unique_identifier", "event__name", "seller__username", "buyer__username", "last_status_change")
     list_filter = ("purchase_status", "event")
     ordering = ("event", "unique_identifier")
-    readonly_fields = ("created_time", "last_status_change")
 
     def formatted_resale_price(self, obj):
         return "{:,.0f}".format(obj.resale_price)

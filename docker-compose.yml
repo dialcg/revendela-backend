@@ -7,11 +7,14 @@ services:
     depends_on:
       - db
       - mailhog
+      - redis
     ports:
       - "8000:8000"
     volumes:
       - .:/app
     command: python manage.py runserver 0.0.0.0:8000
+    env_file:
+      - .env
 
   db:
     image: postgres:latest
@@ -31,26 +34,36 @@ services:
       - "1025:1025"  
       - "8025:8025"  
 
+  redis:
+    image: redis:7.2
+    ports:
+      - "6379:6379"
+
   celery:
-    build: .
+    build:
+      context: .
     command: celery -A revendela worker --loglevel=info
     volumes:
       - .:/app
     depends_on:
       - django_app
+      - db
+      - redis
     env_file:
       - .env
 
   celery-beat:
-    build: .
-    command: celery -A revendela beat --loglevel=info
+    build:
+      context: .
+    command: celery -A revendela beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
     volumes:
       - .:/app
     depends_on:
       - django_app
+      - db
+      - redis
     env_file:
       - .env
-
 
 volumes:
   postgres_data:
