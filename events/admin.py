@@ -10,7 +10,7 @@ class EventCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Venue)
 class VenueAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "address")
+    list_display = ("id", "name", "address", "latitude", "longitude")
     search_fields = ("name", "address")
     list_filter = ("address",)
 
