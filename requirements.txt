@@ -13,3 +13,6 @@ gunicorn
 whitenoise
 djangorestframework-simplejwt
 django-filter
+celery
+django-celery-beat
+redis

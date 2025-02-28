@@ -17,6 +17,8 @@ class Venue(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
     address = models.CharField(max_length=100, default="")
+    latitude = models.CharField(max_length=255, blank=True, null=True)
+    longitude = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         verbose_name = "Venue"
@@ -42,9 +44,14 @@ class Event(models.Model):
     name = models.CharField(
         max_length=100, null=False, blank=False, verbose_name="Nombre"
     )
-    description = models.TextField(blank=True, null=True, verbose_name="Descripción")
-    date = models.DateTimeField(
-        auto_now=True, verbose_name="Fecha y hora", null=True, blank=True
+    description = models.TextField(
+        blank=True, null=True, verbose_name="Descripción"
+    )
+    start_datetime = models.DateTimeField(
+        verbose_name="Fecha y hora de inicio", null=False, blank=False
+    )
+    end_datetime = models.DateTimeField(
+        verbose_name="Fecha y hora de finalización", null=False, blank=False
     )
     venue = models.ForeignKey(
         Venue,
@@ -75,7 +82,7 @@ class Event(models.Model):
     )
 
     class Meta:
-        ordering = ["date"]
+        ordering = ["start_datetime"]
         verbose_name = "Event"
 
     def __str__(self):

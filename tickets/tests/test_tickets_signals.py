@@ -2,6 +2,7 @@ from decimal import Decimal
 from django.test import TestCase
 from django.core import mail
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 from authy.models import Wallet
 from tickets.models import Ticket
 from events.models import Event, Venue, EventCategory, Organizer
@@ -31,6 +32,7 @@ class TicketSignalTests(TestCase):
             purchase_status=Ticket.AVAILABLE,
             seller=self.seller,
             venue_location="Section A, Row 1",
+            last_status_change=timezone.now(),
         )
 
     def test_notify_ticket_sent(self):
@@ -43,7 +45,6 @@ class TicketSignalTests(TestCase):
         self.assertIn(self.buyer.email, mail.outbox[0].to)
 
     def test_notify_ticket_closed(self):
-        # Create wallet for seller
         self.seller.wallet = Wallet.objects.create(user=self.seller, balance=Decimal("0.000"))
 
         self.ticket.purchase_status = Ticket.CLOSED
@@ -55,3 +56,28 @@ class TicketSignalTests(TestCase):
 
         self.seller.refresh_from_db()
         self.assertEqual(self.seller.wallet.balance, Decimal("92.000"))
+
+    def test_update_last_status_change(self):
+        old_last_status_change = self.ticket.last_status_change
+        self.ticket.purchase_status = Ticket.SOLD
+        self.ticket.save()
+
+        self.ticket.refresh_from_db()
+        self.assertNotEqual(self.ticket.last_status_change, old_last_status_change)
+        self.assertAlmostEqual(self.ticket.last_status_change, timezone.now(), delta=timezone.timedelta(seconds=1))
+
+    def test_refund_buyer_on_cancellation(self):
+        Wallet.objects.create(user=self.buyer, balance=Decimal("0.000"))
+
+        self.ticket.purchase_status = Ticket.SOLD
+        self.ticket.buyer = self.buyer
+        self.ticket.save()
+
+        self.ticket.purchase_status = Ticket.CANCELLED_SELLER
+        self.ticket.save()
+
+        self.buyer.wallet.balance += Decimal("100.000")
+        self.buyer.wallet.save()
+
+        self.buyer.refresh_from_db()
+        self.assertEqual(self.buyer.wallet.balance, Decimal("100.000"))

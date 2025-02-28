@@ -8,7 +8,7 @@ class EventListAPIView(generics.ListAPIView):
     serializer_class = EventSerializer
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['name', 'description', 'category__name', 'organizer__name']
-    ordering_fields = ['name', 'date']
+    ordering_fields = ['name', 'start_datetime']
     pagination_class = PageNumberPagination
 
     def get_queryset(self):

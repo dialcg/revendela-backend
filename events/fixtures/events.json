@@ -1,0 +1,91 @@
+[
+    {
+        "model": "events.eventcategory",
+        "pk": 1,
+        "fields": {
+            "name": "Música Electrónica"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 1,
+        "fields": {
+            "name": "Pradera Box",
+            "description": "Espacio para eventos ubicado en Bogotá.",
+            "address": "Calle 224 # 9 – 60, Bogotá, Colombia",
+            "latitude": "4.8097100",
+            "longitude": "-74.0467500"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 2,
+        "fields": {
+            "name": "Medellín Venue",
+            "description": "Lugar de eventos en Medellín.",
+            "address": "Dirección desconocida",
+            "latitude": "",
+            "longitude": ""
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 1,
+        "fields": {
+            "name": "DOOM Bogotá"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 2,
+        "fields": {
+            "name": "Dreaming Festival"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 3,
+        "fields": {
+            "name": "La Solar Festival"
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 1,
+        "fields": {
+            "name": "DOOM Festival 2025",
+            "description": "Festival de música electrónica en Bogotá.",
+            "start_datetime": "2025-04-19T18:00:00-05:00",
+            "end_datetime": "2025-04-20T02:00:00-05:00",
+            "venue": 1,
+            "category": 1,
+            "organizer": 1
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 2,
+        "fields": {
+            "name": "Dreaming Festival 2025",
+            "description": "Festival de música electrónica en Medellín.",
+            "start_datetime": "2025-06-21T16:00:00-05:00",
+            "end_datetime": "2025-06-22T04:00:00-05:00",
+            "venue": 2,
+            "category": 1,
+            "organizer": 2
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 3,
+        "fields": {
+            "name": "La Solar Festival 2025",
+            "description": "Festival de música electrónica en Medellín.",
+            "start_datetime": "2025-02-15T14:00:00-05:00",
+            "end_datetime": "2025-02-16T02:00:00-05:00",
+            "venue": 2,
+            "category": 1,
+            "organizer": 3
+        }
+    }
+]

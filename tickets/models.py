@@ -11,6 +11,8 @@ class Ticket(models.Model):
     SOLD = "SOLD"
     SENT = "SENT"
     CLOSED = "CLOSED"
+    CANCELLED_SELLER = "CANCELLED_SELLER"
+    CANCELLED_EVENT_TIME = "CANCELLED_EVENT_TIME"
 
     STATUS_CHOICES = [
         (AVAILABLE, "Disponible"),
@@ -18,6 +20,8 @@ class Ticket(models.Model):
         (SOLD, "Vendido"),
         (SENT, "Enviado"),
         (CLOSED, "Cerrado"),
+        (CANCELLED_SELLER, "Cancelado"),
+        (CANCELLED_EVENT_TIME, "Cancelado por finalizacion del evento"),
     ]
 
     event = models.ForeignKey(
@@ -34,7 +38,7 @@ class Ticket(models.Model):
         verbose_name="Precio de reventa",
     )
     purchase_status = models.CharField(
-        max_length=10, choices=STATUS_CHOICES, default=AVAILABLE, blank=True, null=True
+        max_length=20, choices=STATUS_CHOICES, default=AVAILABLE, blank=True, null=True
     )
     seller = models.ForeignKey(
         CustomUser,
@@ -52,6 +56,17 @@ class Ticket(models.Model):
     )
     venue_location = models.CharField(
         max_length=100, null=False, blank=False, verbose_name="Locacion"
+    )
+    created_time = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Tiempo de creación",
+        null=False,
+        blank=False
+    )
+    last_status_change = models.DateTimeField(
+        verbose_name="Último cambio de estado",
+        null=False,
+        blank=False
     )
 
     class Meta:
