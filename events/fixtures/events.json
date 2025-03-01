@@ -141,6 +141,17 @@
         }
     },
     {
+        "model": "events.venue",
+        "pk": 12,
+        "fields": {
+            "name": "Estadio Atanasio Girardot",
+            "description": "Estadio Atanasio Girardot, Medellín, Colombia",
+            "address": "Av. Ciro Redondo #38-15, Medellín, Colombia",
+            "latitude": "6.2447",
+            "longitude": "-75.5795"
+        }
+    },
+    {
         "model": "events.organizer",
         "pk": 1,
         "fields": {
@@ -483,6 +494,19 @@
             "venue": 6,
             "category": 3,
             "organizer": 14
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 20,
+        "fields": {
+            "name": "Maluma Pretty Dirty Medallo en el Mapa 2025",
+            "description": "El artista Maluma llega a Medellín con su gira 'Pretty Dirty Medallo', ofreciendo un espectáculo vibrante y lleno de energía. Con una puesta en escena espectacular, el concierto presentará sus éxitos y ritmos latinos en un show inolvidable para sus seguidores.",
+            "start_datetime": "2025-04-25T16:00:00-05:00",
+            "end_datetime": "2025-04-26T00:00:00-05:00",
+            "venue": 12,
+            "category": 2,
+            "organizer": 5
         }
     }
 ]
