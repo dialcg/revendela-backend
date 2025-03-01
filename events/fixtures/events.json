@@ -2,9 +2,22 @@
     {
         "model": "events.eventcategory",
         "pk": 1,
-        "fields": {
-            "name": "Música Electrónica"
-        }
+        "fields": { "name": "Música" }
+    },
+    {
+        "model": "events.eventcategory",
+        "pk": 2,
+        "fields": { "name": "Concierto" }
+    },
+    {
+        "model": "events.eventcategory",
+        "pk": 3,
+        "fields": { "name": "Música Electrónica" }
+    },
+    {
+        "model": "events.eventcategory",
+        "pk": 4,
+        "fields": { "name": "Cultural" }
     },
     {
         "model": "events.venue",
@@ -29,6 +42,105 @@
         }
     },
     {
+        "model": "events.venue",
+        "pk": 3,
+        "fields": {
+            "name": "Parque Simón Bolívar",
+            "description": "Parque Simón Bolívar, Bogotá, Colombia",
+            "address": "Parque Simón Bolívar, Bogotá, Colombia",
+            "latitude": "4.6584",
+            "longitude": "-74.0935"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 4,
+        "fields": {
+            "name": "Estadio El Campín",
+            "description": "Estadio El Campín, Bogotá, Colombia",
+            "address": "Calle 57 #28-15, Bogotá, Colombia",
+            "latitude": "4.6462",
+            "longitude": "-74.0770"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 5,
+        "fields": {
+            "name": "Orquideorama",
+            "description": "Orquideorama, Jardín Botánico, Medellín, Colombia",
+            "address": "Calle 73 #51D-14, Medellín, Colombia",
+            "latitude": "6.2705",
+            "longitude": "-75.5639"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 6,
+        "fields": {
+            "name": "Movistar Arena",
+            "description": "Movistar Arena, Bogotá, Colombia",
+            "address": "Diagonal 61C #26-36, Bogotá, Colombia",
+            "latitude": "4.6462",
+            "longitude": "-74.0770"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 7,
+        "fields": {
+            "name": "Diamante de Béisbol Luis Alberto Villegas",
+            "description": "Diamante de Béisbol Luis Alberto Villegas, Medellín, Colombia",
+            "address": "Calle 50 #75-50, Medellín, Colombia",
+            "latitude": "6.2566",
+            "longitude": "-75.5905"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 8,
+        "fields": {
+            "name": "Arena Cañaveralejo",
+            "description": "Arena Cañaveralejo, Cali, Colombia",
+            "address": "Carrera 56 #3-150, Cali, Colombia",
+            "latitude": "3.3941",
+            "longitude": "-76.5545"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 9,
+        "fields": {
+            "name": "Centro de Eventos Puerta de Oro",
+            "description": "Centro de Eventos Puerta de Oro, Barranquilla, Colombia",
+            "address": "Vía 40 #79B-06, Barranquilla, Colombia",
+            "latitude": "10.9934",
+            "longitude": "-74.7973"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 10,
+        "fields": {
+            "name": "Parque Norte",
+            "description": "Parque Norte, Medellín, Colombia",
+            "address": "Carrera 53 #76-115, Medellín, Colombia",
+            "latitude": "6.2705",
+            "longitude": "-75.5639"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 11,
+        "fields": {
+            "name": "Corferias",
+            "description": "Corferias, Bogotá, Colombia",
+            "address": "Carrera 37 # 24 - 67, Bogotá, Colombia",
+            "latitude": "4.629746",
+            "longitude": "-74.090166"
+        }
+    },
+    {
         "model": "events.organizer",
         "pk": 1,
         "fields": {
@@ -47,6 +159,83 @@
         "pk": 3,
         "fields": {
             "name": "La Solar Festival"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 4,
+        "fields": {
+            "name": "Festival Estéreo Picnic"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 5,
+        "fields": {
+            "name": "Maluma"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 6,
+        "fields": {
+            "name": "Keinemusik"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 7,
+        "fields": {
+            "name": "Fonseca"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 8,
+        "fields": {
+            "name": "Rels B"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 9,
+        "fields": {
+            "name": "Bunbury"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 10,
+        "fields": {
+            "name": "Kylie Minogue"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 11,
+        "fields": {
+            "name": "Hans Zimmer vs John Williams"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 12,
+        "fields": {
+            "name": "EPICA"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 13,
+        "fields": {
+            "name": "Baum Festival"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 14,
+        "fields": {
+            "name": "Black Coffee"
         }
     },
     {
@@ -86,6 +275,214 @@
             "venue": 2,
             "category": 1,
             "organizer": 3
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 4,
+        "fields": {
+            "name": "Festival Estéreo Picnic 2025",
+            "description": "Uno de los festivales de música más importantes de Colombia, con una variedad de artistas nacionales e internacionales.",
+            "start_datetime": "2025-03-27T14:00:00-05:00",
+            "end_datetime": "2025-03-30T23:59:00-05:00",
+            "venue": 3,
+            "category": 1,
+            "organizer": 4
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 5,
+        "fields": {
+            "name": "Maluma - Bogotá en el Mapa",
+            "description": "Concierto del reconocido artista colombiano Maluma.",
+            "start_datetime": "2025-05-03T20:00:00-05:00",
+            "end_datetime": "2025-05-04T00:00:00-05:00",
+            "venue": 4,
+            "category": 2,
+            "organizer": 5
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 6,
+        "fields": {
+            "name": "&ME (from Keinemusik) en Orquideorama",
+            "description": "Presentación del DJ &ME en el Orquideorama del Jardín Botánico de Medellín.",
+            "start_datetime": "2025-03-08T22:00:00-05:00",
+            "end_datetime": "2025-03-09T03:00:00-05:00",
+            "venue": 5,
+            "category": 3,
+            "organizer": 6
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 7,
+        "fields": {
+            "name": "Fonseca - Tropicalia Tour en Bogotá",
+            "description": "Fonseca presentará su 'Tropicalia Tour' en el Movistar Arena de Bogotá, ofreciendo una experiencia musical única con una banda de 12 músicos en escena.",
+            "start_datetime": "2025-04-04T20:00:00-05:00",
+            "end_datetime": "2025-04-05T23:00:00-05:00",
+            "venue": 6,
+            "category": 2,
+            "organizer": 7
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 8,
+        "fields": {
+            "name": "Fonseca - Tropicalia Tour en Bogotá",
+            "description": "Segunda presentación de Fonseca en el Movistar Arena de Bogotá como parte de su 'Tropicalia Tour'.",
+            "start_datetime": "2025-04-05T20:00:00-05:00",
+            "end_datetime": "2025-04-06T00:00:00-05:00",
+            "venue": 6,
+            "category": 2,
+            "organizer": 7
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 9,
+        "fields": {
+            "name": "Fonseca - Tropicalia Tour en Medellín",
+            "description": "Fonseca llevará su 'Tropicalia Tour' al Diamante de Béisbol Luis Alberto Villegas en Medellín, ofreciendo una interpretación renovada de su repertorio.",
+            "start_datetime": "2025-04-24T20:00:00-05:00",
+            "end_datetime": "2025-04-25T00:00:00-05:00",
+            "venue": 7,
+            "category": 2,
+            "organizer": 7
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 10,
+        "fields": {
+            "name": "Fonseca - Tropicalia Tour en Cali",
+            "description": "El 'Tropicalia Tour' de Fonseca llega a Cali, prometiendo una noche llena de ritmo y emoción en la Arena Cañaveralejo.",
+            "start_datetime": "2025-04-25T20:00:00-05:00",
+            "end_datetime": "2025-04-26T00:00:00-05:00",
+            "venue": 8,
+            "category": 2,
+            "organizer": 7
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 11,
+        "fields": {
+            "name": "Fonseca - Tropicalia Tour en Barranquilla",
+            "description": "Fonseca llevará su 'Tropicalia Tour' al Centro de Eventos Puerta de Oro en Barranquilla, ofreciendo una interpretación renovada de su repertorio.",
+            "start_datetime": "2025-04-26T20:00:00-05:00",
+            "end_datetime": "2025-04-27T00:00:00-05:00",
+            "venue": 9,
+            "category": 2,
+            "organizer": 7
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 12,
+        "fields": {
+            "name": "Fonseca - Tropicalia Tour en Bogotá",
+            "description": "Debido a la alta demanda, Fonseca añade una tercera fecha en Bogotá para su 'Tropicalia Tour'.",
+            "start_datetime": "2025-04-30T20:00:00-05:00",
+            "end_datetime": "2025-05-01T00:00:00-05:00",
+            "venue": 6,
+            "category": 2,
+            "organizer": 7
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 13,
+        "fields": {
+            "name": "Rels B - A New Star World Tour en Bogotá",
+            "description": "Rels B, destacado exponente de la música urbana española, presentará su 'A New Star World Tour' en Bogotá, interpretando tanto sus nuevos temas como los éxitos de sus álbumes anteriores.",
+            "start_datetime": "2025-09-11T19:00:00-05:00",
+            "end_datetime": "2025-09-12T00:00:00-05:00",
+            "venue": 6,
+            "category": 2,
+            "organizer": 8
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 14,
+        "fields": {
+            "name": "Bunbury en Vivo 2025",
+            "description": "El legendario rockero Bunbury presentará su espectáculo en vivo, fusionando rock y poesía, ofreciendo una experiencia única para los amantes del género.",
+            "start_datetime": "2025-06-28T19:00:00-05:00",
+            "end_datetime": "2025-06-29T00:00:00-05:00",
+            "venue": 6,
+            "category": 2,
+            "organizer": 9
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 15,
+        "fields": {
+            "name": "Kylie Minogue en Bogotá 2025",
+            "description": "La icónica Kylie Minogue llega a Bogotá para ofrecer un espectáculo inolvidable de pop y dance. Con una puesta en escena espectacular, efectos visuales de última generación y sus éxitos internacionales, promete una noche llena de glamour y energía.",
+            "start_datetime": "2025-08-19T19:00:00-05:00",
+            "end_datetime": "2025-08-20T00:00:00-05:00",
+            "venue": 6,
+            "category": 2,
+            "organizer": 10
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 16,
+        "fields": {
+            "name": "Hans Zimmer vs John Williams – Bogotá 2025",
+            "description": "Disfruta de una noche histórica en la que dos leyendas de la música cinematográfica, Hans Zimmer y John Williams, se enfrentarán en un duelo musical en vivo. El evento presentará interpretaciones de sus composiciones más icónicas, fusionando sonidos épicos y arreglos innovadores para crear una experiencia única para los amantes del cine y la música.",
+            "start_datetime": "2025-07-05T18:30:00-05:00",
+            "end_datetime": "2025-07-06T00:00:00-05:00",
+            "venue": 6,
+            "category": 2,
+            "organizer": 11
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 17,
+        "fields": {
+            "name": "EPICA en Medellín 2025",
+            "description": "La reconocida banda de metal sinfónico EPICA se presenta en Medellín para ofrecer un espectáculo inolvidable, fusionando la potencia del metal con arreglos sinfónicos y elementos orquestales. El show promete ser una experiencia única para los fans del género, combinando una puesta en escena espectacular y la energía característica de la banda.",
+            "start_datetime": "2025-09-25T19:00:00-05:00",
+            "end_datetime": "2025-09-26T00:00:00-05:00",
+            "venue": 10,
+            "category": 2,
+            "organizer": 12
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 18,
+        "fields": {
+            "name": "Baum Festival 2025",
+            "description": "Baum Festival 2025 es un festival de música y arte que reúne a diversos artistas nacionales e internacionales en un ambiente vibrante. Durante dos días, se presentarán múltiples escenarios, actividades culturales e instalaciones artísticas, ofreciendo una experiencia interactiva y única para el público.",
+            "start_datetime": "2025-05-31T15:00:00-05:00",
+            "end_datetime": "2025-06-02T03:00:00-05:00",
+            "venue": 11,
+            "category": 3,
+            "organizer": 13
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 19,
+        "fields": {
+            "name": "Black Coffee en Bogotá 2025",
+            "description": "Black Coffee, reconocido DJ y productor internacional de deep house y música electrónica, ofrecerá un espectáculo en vivo en Bogotá. El evento promete una experiencia sensorial única, con un set musical innovador, efectos visuales impactantes y una ambientación diseñada para los amantes de la electrónica.",
+            "start_datetime": "2025-04-11T17:00:00-05:00",
+            "end_datetime": "2025-04-12T00:00:00-05:00",
+            "venue": 6,
+            "category": 3,
+            "organizer": 14
         }
     }
 ]
