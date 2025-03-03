@@ -152,6 +152,149 @@
         }
     },
     {
+        "model": "events.venue",
+        "pk": 13,
+        "fields": {
+            "name": "Coliseo Lycee Français Louis Pasteur",
+            "description": "Coliseo Lycee Français Louis Pasteur, Bogotá, Colombia",
+            "address": "Calle 86 #7-64, Bogotá, Colombia",
+            "latitude": "4.701354",
+            "longitude": "-74.053831"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 14,
+        "fields": {
+            "name": "Auditorio Lycée Français Louis Pasteur",
+            "description": "Auditorio Lycée Français Louis Pasteur, Bogotá, Colombia",
+            "address": "Carrera 8 # 86 - 50, Bogotá, Colombia",
+            "latitude": "4.6601",
+            "longitude": "-74.0652"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 15,
+        "fields": {
+            "name": "Andrés Carne De Res",
+            "description": "Andrés Carne De Res, Chía, Cundinamarca, Colombia",
+            "address": "Calle 3 # 11A -56, Chía, Cundinamarca, Colombia",
+            "latitude": "4.8770",
+            "longitude": "-74.1450"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 16,
+        "fields": {
+            "name": "Centro De Eventos Royal Center",
+            "description": "Centro De Eventos Royal Center, Bogotá, Cundinamarca, Colombia",
+            "address": "Carrera 13 #66-80, Bogotá, Colombia",
+            "latitude": "4.6550",
+            "longitude": "-74.0850"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 17,
+        "fields": {
+            "name": "Estudio De La Piña",
+            "description": "Estudio De La Piña, Bogotá, Cundinamarca, Colombia",
+            "address": "Carrera 17 # 60 - 25, Bogotá, Colombia",
+            "latitude": "4.6500",
+            "longitude": "-74.0800"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 18,
+        "fields": {
+            "name": "Cenfer - Bucaramanga",
+            "description": "Cenfer - Bucaramanga, Santander, Colombia",
+            "address": "CENFER- VÍA GIRÓN KM#6, Bucaramanga, Santander, Colombia",
+            "latitude": "7.1254",
+            "longitude": "-73.1198"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 19,
+        "fields": {
+            "name": "Teatro Los Fundadores",
+            "description": "Teatro Los Fundadores, Manizales, Caldas, Colombia",
+            "address": "Cl. 33 #24-28, Manizales, Caldas, Colombia",
+            "latitude": "5.0680",
+            "longitude": "-75.5170"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 20,
+        "fields": {
+            "name": "Hotel El Prado",
+            "description": "Hotel El Prado, Barranquilla, Atlántico, Colombia",
+            "address": "Cra. 54 #70-10, Nte. Centro Historico, Barranquilla, Atlántico, Colombia",
+            "latitude": "10.9685",
+            "longitude": "-74.7813"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 21,
+        "fields": {
+            "name": "Teatro Astor Plaza",
+            "description": "Teatro Astor Plaza, Bogotá, Cundinamarca, Colombia",
+            "address": "Calle 67 # 11 - 58, Bogotá, Colombia",
+            "latitude": "4.6550",
+            "longitude": "-74.0600"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 22,
+        "fields": {
+            "name": "Cumbia House",
+            "description": "Cumbia House, Bogotá, Cundinamarca, Colombia",
+            "address": "Carrera 13 #96-11, Bogotá, Colombia",
+            "latitude": "4.6700",
+            "longitude": "-74.0700"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 23,
+        "fields": {
+            "name": "Sky Center",
+            "description": "Sky Center, Medellín, Antioquia, Colombia",
+            "address": "CALLE 85 #48-01, Itagui, Antioquia, Colombia",
+            "latitude": "6.1929",
+            "longitude": "-75.6196"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 24,
+        "fields": {
+            "name": "Costeño Beach",
+            "description": "Costeño Beach, Santa Marta, Magdalena, Colombia",
+            "address": "FCA KEYS BEACH VIA RIOHACHA KM 39, Santa Marta, Magdalena, Colombia",
+            "latitude": "11.2404",
+            "longitude": "-74.1990"
+        }
+    },
+    {
+        "model": "events.venue",
+        "pk": 25,
+        "fields": {
+            "name": "Viajero Hostels Tayrona & Ecohabs",
+            "description": "Viajero Hostels Tayrona & Ecohabs, Santa Marta, Magdalena, Colombia",
+            "address": "Via Riohacha #Km. 48, Santa Marta, Magdalena, Colombia",
+            "latitude": "11.2404",
+            "longitude": "-74.1990"
+        }
+    },
+    {
         "model": "events.organizer",
         "pk": 1,
         "fields": {
@@ -247,6 +390,83 @@
         "pk": 14,
         "fields": {
             "name": "Black Coffee"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 15,
+        "fields": {
+            "name": "Asociacion Izmir"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 16,
+        "fields": {
+            "name": "Lycée Français Louis Pasteur"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 17,
+        "fields": {
+            "name": "INMACULADA GUADALUPE Y AMIGOS SAS"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 18,
+        "fields": {
+            "name": "PARAMO PRESENTA SAS"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 19,
+        "fields": {
+            "name": "Parcels"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 20,
+        "fields": {
+            "name": "Loop Entertainment SAS"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 21,
+        "fields": {
+            "name": "PROMOTORA COLOMBIA S.A.S."
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 22,
+        "fields": {
+            "name": "MATUNA INVERSIONES SAS"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 23,
+        "fields": {
+            "name": "Corporación FLC"
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 24,
+        "fields": {
+            "name": "COSTEÑO HOTEL S.A.S."
+        }
+    },
+    {
+        "model": "events.organizer",
+        "pk": 25,
+        "fields": {
+            "name": "EL VIAJERO HOSTELS S.A.S."
         }
     },
     {
@@ -507,6 +727,279 @@
             "venue": 12,
             "category": 2,
             "organizer": 5
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 21,
+        "fields": {
+            "name": "Mesías de Handel",
+            "description": "Disfruta de una magistral interpretación de la obra maestra \"El Mesías\" de Georg Friedrich Händel, presentada por solistas, coro y orquesta. Una velada de música clásica que promete emocionar y conmover, transportándote a través de la grandeza del Barroco.",
+            "start_datetime": "2025-03-07T19:30:00-05:00",
+            "end_datetime": "2025-03-08T00:00:00-05:00",
+            "venue": 13,
+            "category": 2,
+            "organizer": 15
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 22,
+        "fields": {
+            "name": "Les Jeudis du Pasteur: Duo a 4 Manos",
+            "description": "Una exclusiva velada musical en la que destacados intérpretes se reúnen para ofrecer un dúo a 4 manos. El evento forma parte de la serie 'Les Jeudis du Pasteur' y promete una noche de música clásica y contemporánea en un ambiente íntimo y acogedor.",
+            "start_datetime": "2025-05-15T19:00:00-05:00",
+            "end_datetime": "2025-05-15T21:00:00-05:00",
+            "venue": 14,
+            "category": 2,
+            "organizer": 16
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 23,
+        "fields": {
+            "name": "A LA CALLE CON MARBELLE",
+            "description": "Un vibrante concierto en el que Marbelle se presenta en vivo, llevando su energía y estilo único al público. El evento se realizará en el emblemático espacio de eventos Andrés Carne De Res en Chía, donde la música y la cultura se fusionan para ofrecer una experiencia inolvidable.",
+            "start_datetime": "2025-03-14T20:00:00-05:00",
+            "end_datetime": "2025-03-15T00:00:00-05:00",
+            "venue": 15,
+            "category": 2,
+            "organizer": 17
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 24,
+        "fields": {
+            "name": "THE WARNING - KEEP ME FED TOUR",
+            "description": "The Warning, la banda de rock reconocida por su energía y estilo innovador, se presenta en Colombia con su gira \"Keep Me Fed Tour\". El show promete una noche vibrante con sus grandes éxitos y nuevas propuestas, fusionando rock, pop y actitud en un escenario enérgico.",
+            "start_datetime": "2025-03-20T21:00:00-05:00",
+            "end_datetime": "2025-03-21T00:00:00-05:00",
+            "venue": 16,
+            "category": 2,
+            "organizer": 18
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 25,
+        "fields": {
+            "name": "PARCELS - CONCIERTO DE INAGURACIÓN ESTÉREO PICNIC",
+            "description": "Parcels se presenta en el concierto de inauguración del Festival Estéreo Picnic, marcando el inicio del evento con una propuesta enérgica y vanguardista. El show promete una experiencia única para los amantes de la música indie y electrónica, fusionando sonidos innovadores y un espectáculo visual impactante.",
+            "start_datetime": "2025-03-26T21:30:00-05:00",
+            "end_datetime": "2025-03-27T00:00:00-05:00",
+            "venue": 16,
+            "category": 2,
+            "organizer": 19
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 26,
+        "fields": {
+            "name": "EL DAVID AGUILAR - TUR DEL DESTINO",
+            "description": "El David Aguilar emprende \"Tur del Destino\", una gira que invita a descubrir un repertorio lleno de emociones, fusionando letras profundas con una propuesta musical única. La presentación promete una experiencia íntima en un ambiente selecto y acogedor, destacándose por su originalidad y sensibilidad artística.",
+            "start_datetime": "2025-04-10T21:00:00-05:00",
+            "end_datetime": "2025-04-11T00:00:00-05:00",
+            "venue": 17,
+            "category": 2,
+            "organizer": 20
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 27,
+        "fields": {
+            "name": "DOLORES TE CANTA",
+            "description": "Dolores presenta una velada musical íntima en la que interpretará en vivo sus canciones, transmitiendo emociones y conectando de manera directa con el público. Se trata de un evento que busca resaltar la fuerza y sensibilidad de su propuesta musical.",
+            "start_datetime": "2025-04-26T21:00:00-05:00",
+            "end_datetime": "2025-04-27T00:00:00-05:00",
+            "venue": 17,
+            "category": 2,
+            "organizer": 20
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 28,
+        "fields": {
+            "name": "ANDRÉS CALAMARO: AGENDA 1999 TOUR",
+            "description": "Andrés Calamaro, ícono del rock en español, regresa con su \"Agenda 1999 Tour\", recorriendo sus mayores éxitos y clásicos en un espectáculo lleno de energía y nostalgia. Este show promete rendir homenaje a su trayectoria musical, ofreciendo una noche inolvidable para los fans y amantes del rock.",
+            "start_datetime": "2025-05-15T21:00:00-05:00",
+            "end_datetime": "2025-05-16T00:00:00-05:00",
+            "venue": 18,
+            "category": 2,
+            "organizer": 21
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 29,
+        "fields": {
+            "name": "ANDRÉS CALAMARO: AGENDA 1999 TOUR",
+            "description": "Andrés Calamaro, ícono del rock en español, regresa con su \"Agenda 1999 Tour\", presentando en vivo sus clásicos y nuevos éxitos en un espectáculo lleno de energía y nostalgia. La experiencia promete transportar a los asistentes a través de su trayectoria musical con una puesta en escena inolvidable.",
+            "start_datetime": "2025-05-17T21:00:00-05:00",
+            "end_datetime": "2025-05-18T00:00:00-05:00",
+            "venue": 8,
+            "category": 2,
+            "organizer": 21
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 30,
+        "fields": {
+            "name": "ANDRÉS CALAMARO: AGENDA 1999 TOUR",
+            "description": "Andrés Calamaro, ícono del rock en español, regresa con su \"Agenda 1999 Tour\", presentando en vivo sus clásicos y grandes éxitos en un espectáculo lleno de energía y nostalgia. La actuación promete una noche inolvidable, combinando interpretaciones vibrantes y una puesta en escena de alto nivel.",
+            "start_datetime": "2025-05-25T20:00:00-05:00",
+            "end_datetime": "2025-05-26T00:00:00-05:00",
+            "venue": 19,
+            "category": 2,
+            "organizer": 21
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 31,
+        "fields": {
+            "name": "ANDRÉS CALAMARO: AGENDA 1999 TOUR",
+            "description": "Andrés Calamaro regresa con su \"Agenda 1999 Tour\" para interpretar en vivo sus clásicos y mayores éxitos, ofreciendo un espectáculo lleno de energía, nostalgia y una puesta en escena única que promete emocionar a los aficionados del rock en español.",
+            "start_datetime": "2025-05-31T21:00:00-05:00",
+            "end_datetime": "2025-06-01T00:00:00-05:00",
+            "venue": 20,
+            "category": 2,
+            "organizer": 21
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 32,
+        "fields": {
+            "name": "IÑIGO QUINTERO",
+            "description": "Iñigo Quintero se presenta en el Teatro Astor Plaza, ofreciendo una experiencia única en vivo. Con un estilo que fusiona elementos de pop, rock y música electrónica, su show promete emocionar al público con interpretaciones enérgicas y una puesta en escena innovadora.",
+            "start_datetime": "2025-05-17T20:30:00-05:00",
+            "end_datetime": "2025-05-18T00:00:00-05:00",
+            "venue": 21,
+            "category": 2,
+            "organizer": 21
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 33,
+        "fields": {
+            "name": "JOAQUINA",
+            "description": "JOAQUINA se presenta en el Teatro Astor Plaza en una velada íntima y cautivadora, donde demostrará su talento a través de interpretaciones musicales llenas de emoción y personalidad. La experiencia promete conectar profundamente con el público, ofreciendo un repertorio que abarca desde clásicos hasta propuestas contemporáneas.",
+            "start_datetime": "2025-05-18T20:00:00-05:00",
+            "end_datetime": "2025-05-19T00:00:00-05:00",
+            "venue": 21,
+            "category": 2,
+            "organizer": 18
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 34,
+        "fields": {
+            "name": "PAULA ARENAS",
+            "description": "Paula Arenas se presenta en Cumbia House, Bogotá, para deleitar al público con su propuesta musical, fusionando ritmos y letras emotivas que conectan con la audiencia. La noche promete ser una experiencia única llena de energía y sensibilidad.",
+            "start_datetime": "2025-05-21T21:00:00-05:00",
+            "end_datetime": "2025-05-22T00:00:00-05:00",
+            "venue": 22,
+            "category": 2,
+            "organizer": 17
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 35,
+        "fields": {
+            "name": "TRUENO",
+            "description": "TRUENO se presenta en Sky Center en Medellín con una propuesta vibrante y enérgica. El artista, reconocido por su estilo innovador y potente presencia en el escenario, ofrecerá un espectáculo de música urbana que fusiona ritmos modernos y letras impactantes, garantizando una experiencia inolvidable para los asistentes.",
+            "start_datetime": "2025-06-05T21:00:00-05:00",
+            "end_datetime": "2025-06-06T00:00:00-05:00",
+            "venue": 23,
+            "category": 2,
+            "organizer": 21
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 36,
+        "fields": {
+            "name": "YSY A",
+            "description": "YSY A se presenta en el Centro De Eventos Royal Center, ofreciendo un espectáculo en vivo lleno de energía y ritmos urbanos. Su performance promete conectar con el público a través de una propuesta musical fresca y auténtica en el género urbano, fusionando influencias de trap y reggaetón.",
+            "start_datetime": "2025-09-27T21:30:00-05:00",
+            "end_datetime": "2025-09-28T00:00:00-05:00",
+            "venue": 16,
+            "category": 2,
+            "organizer": 21
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 37,
+        "fields": {
+            "name": "DAMIANO DAVID",
+            "description": "DAMIANO DAVID se presenta en el Centro De Eventos Royal Center en Bogotá, ofreciendo un espectáculo en vivo lleno de energía y una propuesta musical única. Su actuación promete conectar intensamente con el público, destacándose por su estilo innovador y performance vibrante.",
+            "start_datetime": "2025-11-13T21:00:00-05:00",
+            "end_datetime": "2025-11-14T00:00:00-05:00",
+            "venue": 16,
+            "category": 2,
+            "organizer": 21
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 38,
+        "fields": {
+            "name": "PIERCE THE VEIL: I CAN'T HEAR YOU TOUR",
+            "description": "Pierce The Veil se presenta en el \"I Can't Hear You Tour\", llevando su potente mezcla de post-hardcore y rock alternativo a Bogotá. El espectáculo promete una experiencia enérgica y emocionante, con una puesta en escena impactante que conectará profundamente con los fans.",
+            "start_datetime": "2025-12-05T19:00:00-05:00",
+            "end_datetime": "2025-12-06T00:00:00-05:00",
+            "venue": 16,
+            "category": 2,
+            "organizer": 18
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 39,
+        "fields": {
+            "name": "FESTIVAL LAS CHELAS 2025",
+            "description": "Festival Las Chelas 2025 reúne a la comunidad para disfrutar de un día lleno de música, gastronomía y actividades culturales en un ambiente festivo y vibrante. Presentado por la Corporación FLC, este evento promete ser una experiencia única con actuaciones de artistas locales e internacionales, espacios interactivos y propuestas innovadoras para el disfrute de todos los asistentes.",
+            "start_datetime": "2025-03-08T11:00:00-05:00",
+            "end_datetime": "2025-03-09T00:00:00-05:00",
+            "venue": 5,
+            "category": 4,
+            "organizer": 23
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 40,
+        "fields": {
+            "name": "BAILE SAGRADO - PAQUETE 3 DÍAS",
+            "description": "BAILE SAGRADO es un festival de tres días que se celebra en Costeño Beach, Santa Marta. Este paquete ofrece una experiencia única de música, danza y cultura, en la que los asistentes podrán disfrutar de presentaciones en vivo, instalaciones artísticas y actividades interactivas en un entorno natural frente al mar. Es un evento que fusiona tradición y modernidad, invitando a vivir momentos inolvidables.",
+            "start_datetime": "2025-04-17T11:00:00-05:00",
+            "end_datetime": "2025-04-20T00:00:00-05:00",
+            "venue": 24,
+            "category": 4,
+            "organizer": 24
+        }
+    },
+    {
+        "model": "events.event",
+        "pk": 41,
+        "fields": {
+            "name": "OLAS SONORAS 2025",
+            "description": "OLAS SONORAS 2025 es un evento que invita a disfrutar de un día de música, arte y ambiente caribeño en Santa Marta. Organizado en Viajero Hostels Tayrona & Ecohabs, el evento fusiona presentaciones en vivo, actividades culturales y experiencias únicas en un entorno natural, promoviendo la conexión con la cultura local y el paisaje costero.",
+            "start_datetime": "2025-07-19T13:00:00-05:00",
+            "end_datetime": "2025-07-20T00:00:00-05:00",
+            "venue": 25,
+            "category": 4,
+            "organizer": 25
         }
     }
 ]

@@ -80,6 +80,9 @@ class Event(models.Model):
         null=False,
         verbose_name="Organizador",
     )
+    is_paid = models.BooleanField(
+        default=False
+    )
 
     class Meta:
         ordering = ["start_datetime"]
